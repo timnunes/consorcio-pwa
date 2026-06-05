@@ -1,7 +1,7 @@
 {
   "name": "Consórcio App",
   "short_name": "Consórcio",
-  "start_url": "/consorcio-pwa/",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#1565c0",
   "theme_color": "#1565c0",
