@@ -1,17 +1,16 @@
 const CONFIG = {
     // Cache Version
     cacheVersion: "v1",
-
     // General App Info
-    appName: "My App",
-    appShortName: "MyApp",
+    appName: "Consórcio App",
+    appShortName: "Consórcio",
     
     // Iframe Config
-    iframeUrl: "https://doc-hello.streamlit.app?embed=true&show_footer=false",
+    iframeUrl: "https://consorcio-app-tp6qf8bzcttsadpwqsjxj2.streamlit.app?embed=true&show_footer=false",
     
     // Visuals & Icons
-    themeColor: "#0E1117",
-    backgroundColor: "#0E1117",
+    themeColor: "#1565c0",
+    backgroundColor: "#1565c0",
     appIcon: "/icon.png",
     
     // PWA Display Logic
