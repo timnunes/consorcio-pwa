@@ -6,7 +6,7 @@ const CONFIG = {
     appShortName: "Consórcio",
     
     // Iframe Config
-    iframeUrl: "https://consorcio-app-tp6qf8bzcttsadpwqsjxj2.streamlit.app?embed=true&show_footer=false",
+    iframeUrl: "https://consorcio.timautomacoes.com.br?embed=true&show_footer=false",
     
     // Visuals & Icons
     themeColor: "#1565c0",
