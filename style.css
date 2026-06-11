@@ -11,7 +11,7 @@ iframe {
     border: none;
     width: 100%;
     /* Hide the streamlit footer */
-    height: calc(100% + 19px);
+    height: calc(100% + 23px);
     display: block;
 }
 /* Offline Overlay Styles */
