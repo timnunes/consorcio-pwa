@@ -17,7 +17,7 @@ self.addEventListener('install', event => {
       .then(cache => {
         return cache.addAll(urlsToCache);
       })
-      .then(() => self.skipWaiting())
+    // SEM self.skipWaiting() aqui — o SW novo fica esperando o usuário clicar em Atualizar
   );
 });
 
@@ -40,6 +40,13 @@ self.addEventListener('activate', event => {
       });
     })
   );
+});
+
+// Recebe mensagem do app.js quando usuário clica em "Atualizar"
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener('fetch', event => {
