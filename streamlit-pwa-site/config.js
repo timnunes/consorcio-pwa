@@ -5,7 +5,7 @@ const CONFIG = {
     appName: "Consórcio App",
     appShortName: "Consórcio",
     
-    // Iframe Config
+    // Iframe Config 
     iframeUrl: "https://consorcio.timautomacoes.com.br?embed=true&show_footer=false",
     
     // Visuals & Icons
