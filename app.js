@@ -48,8 +48,11 @@ if ('serviceWorker' in navigator) {
             }
         });
 
-        // Reload só acontece após o usuário clicar em Atualizar
-        // NÃO colocar window.location.reload() aqui no controllerchange
+        // Reload só acontece após o SW novo assumir o controle
+        // (disparado pelo SKIP_WAITING enviado pelo applyUpdate)
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            window.location.reload();
+        });
     });
 }
 
@@ -95,10 +98,6 @@ function showUpdateBanner() {
 function applyUpdate() {
     navigator.serviceWorker.getRegistration().then(registration => {
         if (registration && registration.waiting) {
-            // Quando o SW novo assumir, recarrega
-            navigator.serviceWorker.addEventListener('controllerchange', () => {
-                window.location.reload();
-            });
             registration.waiting.postMessage({ type: 'SKIP_WAITING' });
         } else {
             window.location.reload();
