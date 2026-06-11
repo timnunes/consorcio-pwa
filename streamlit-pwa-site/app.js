@@ -1,23 +1,18 @@
 // Apply Config
 document.addEventListener('DOMContentLoaded', () => {
-    // Titles and Meta
     document.title = CONFIG.appName;
     document.getElementById('apple-title').content = CONFIG.appName;
     document.getElementById('theme-color').content = CONFIG.themeColor;
 
-    // Icons
     document.getElementById('favicon').href = CONFIG.appIcon;
     document.getElementById('apple-icon').href = CONFIG.appIcon;
 
-    // iframe
     const iframe = document.getElementById('main-iframe');
     iframe.src = CONFIG.iframeUrl;
 
-    // Body Background
     document.body.style.backgroundColor = CONFIG.backgroundColor;
     document.getElementById('offline-overlay').style.backgroundColor = CONFIG.backgroundColor;
 
-    // Initial Online/Offline Check
     updateOnlineStatus();
 });
 
@@ -27,7 +22,7 @@ if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js').then(function (registration) {
             console.log('ServiceWorker registrado com escopo: ', registration.scope);
 
-            // Verifica se já tem um SW novo esperando (app aberto depois de atualização)
+            // Verifica se já tem um SW novo esperando
             if (registration.waiting) {
                 showUpdateBanner();
             }
@@ -46,23 +41,21 @@ if ('serviceWorker' in navigator) {
             console.log('ServiceWorker falhou: ', err);
         });
 
-        // Quando o SW novo assume o controle, recarrega a página
-        navigator.serviceWorker.addEventListener('controllerchange', () => {
-            window.location.reload();
-        });
-
         // Recebe mensagem do SW avisando que atualizou
         navigator.serviceWorker.addEventListener('message', event => {
             if (event.data && event.data.type === 'SW_UPDATED') {
                 showUpdateBanner();
             }
         });
+
+        // Reload só acontece após o usuário clicar em Atualizar
+        // NÃO colocar window.location.reload() aqui no controllerchange
     });
 }
 
-// Mostra banner discreto de atualização no topo
+// Mostra banner fixo de atualização no topo
 function showUpdateBanner() {
-    if (document.getElementById('update-banner')) return; // já existe
+    if (document.getElementById('update-banner')) return;
 
     const banner = document.createElement('div');
     banner.id = 'update-banner';
@@ -98,10 +91,14 @@ function showUpdateBanner() {
     document.body.prepend(banner);
 }
 
-// Aplica a atualização recarregando a página
+// Aplica atualização ao clicar no botão
 function applyUpdate() {
     navigator.serviceWorker.getRegistration().then(registration => {
         if (registration && registration.waiting) {
+            // Quando o SW novo assumir, recarrega
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                window.location.reload();
+            });
             registration.waiting.postMessage({ type: 'SKIP_WAITING' });
         } else {
             window.location.reload();
