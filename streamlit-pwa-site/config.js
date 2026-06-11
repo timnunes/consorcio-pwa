@@ -1,6 +1,6 @@
 const CONFIG = {
     // Cache Version 
-    cacheVersion: "v2",
+    cacheVersion: "v3",
     // General App Info
     appName: "Consórcio App",
     appShortName: "Consórcio",
