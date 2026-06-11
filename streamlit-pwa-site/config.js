@@ -8,7 +8,7 @@ const CONFIG = {
     // Iframe Config 
     iframeUrl: "https://consorcio.timautomacoes.com.br?embed=true&show_footer=false",
     
-    // Visuals & Icons
+    // Visuals & Icons 
     themeColor: "#1565c0",
     backgroundColor: "#1565c0",
     appIcon: "/icon.png",
