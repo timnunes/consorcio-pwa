@@ -13,6 +13,8 @@ iframe {
     height: 100dvh;
     margin-top: -1px;
     display: block;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 /* Offline Overlay Styles */
 #offline-overlay {
