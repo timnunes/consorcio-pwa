@@ -10,8 +10,8 @@ body, html {
 iframe {
     border: none;
     width: 100%;
-    /* Hide the streamlit footer */
-    height: calc(100% + 23px);
+    height: 100dvh;
+    margin-top: -1px;
     display: block;
 }
 /* Offline Overlay Styles */
